@@ -1,16 +1,10 @@
 # tragic.pw source
 
 
-credits:  
+credits:
 
+familypet https://steamcommunity.com/id/familypet
 
-familypet  https://steamcommunity.com/id/familypet
+PolandCheater (phook)
 
-
-PolandCheater  (phook)
-
-
-darkingman & @kittenzok  (frostyv2)
-
-
-
+darkingman & @kittenzok (frostyv2)
