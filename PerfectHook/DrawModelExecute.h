@@ -72,6 +72,60 @@ IMaterial* GetCurrentZMaterial(int mati)
 	}
 }
 
+
+static QAngle getRealAngle() {
+	CInput::CUserCmd *pCmd;
+	C_BaseEntity* pLocal = g_EntityList->GetClientEntity(g_Engine->GetLocalPlayer());
+	if (g_Options.Ragebot.EnabledAntiAim || g_Options.LegitBot.LegitAA)
+		return pCmd->viewangles;
+	else if (pLocal)
+		return pLocal->GetEyePosition();
+}
+
+static QAngle getFakeAngle() {
+	CInput::CUserCmd *pCmd;
+	C_BaseEntity* pLocal = g_EntityList->GetClientEntity(g_Engine->GetLocalPlayer());
+	if (g_Options.Ragebot.EnabledAntiAim || g_Options.LegitBot.LegitAA)
+		return pCmd->viewangles;
+	else if (pLocal)
+		return pLocal->GetEyePosition();
+}
+
+static QAngle getLowerBodyAngle() {
+	C_BaseEntity* pLocal = g_EntityList->GetClientEntity(g_Engine->GetLocalPlayer());
+	if (!pLocal)
+		return QAngle();
+
+	return QAngle(0, pLocal->GetLowerBodyYaw(), 0);
+}
+
+void GhostChams()
+{
+	if (g_Engine->IsConnected() && g_Engine->IsInGame())
+	{
+		if (g_Options.Visuals.GhostChams) {
+			C_BaseEntity* pLocal = g_EntityList->GetClientEntity(g_Engine->GetLocalPlayer());
+			
+				static IMaterial* mat;
+				Vector Chamsang;
+				if (g_Options.Visuals.GhostChamsMode == 0)
+					Chamsang = getRealAngle();
+				else if (g_Options.Visuals.GhostChamsMode == 1)
+					Chamsang = getFakeAngle();
+				else if (g_Options.Visuals.GhostChamsMode == 2)
+					Chamsang = getLowerBodyAngle();
+					Vector OrigAng;
+					OrigAng = pLocal->GetEyeAnglesNew();
+					pLocal->SetAngle2(Vector(0, Chamsang.y, 0));
+					g_RenderView->SetColorModulation(g_Options.Visuals.GhostChamsColor);
+					g_ModelRender->ForcedMaterialOverride(mat);
+					g_ModelRender->ForcedMaterialOverride(nullptr);
+					pLocal->SetAngle2(OrigAng);
+				
+			
+		}
+	}
+}
 void __fastcall hkDrawModelExecute(void* thisptr, int edx, void* ctx, void* state, const ModelRenderInfo_t &pInfo, matrix3x4 *pCustomBoneToWorld)
 {
 	static bool DontDraw = false;
@@ -337,5 +391,6 @@ void __fastcall hkDrawModelExecute(void* thisptr, int edx, void* ctx, void* stat
 		ofunc(thisptr, ctx, state, pInfo, pCustomBoneToWorld);
 	g_ModelRender->ForcedMaterialOverride(NULL);
 
-
+	GhostChams();
 }
+

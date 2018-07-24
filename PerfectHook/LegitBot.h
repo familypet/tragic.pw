@@ -30,7 +30,7 @@ private:
 	// Functionality
 	bool get_hitbox(C_BaseEntity *local, C_BaseEntity *entity, Vector &destination);
 	int get_target(C_BaseEntity *local, CBaseCombatWeapon *weapon, CInput::CUserCmd *cmd, Vector &destination);
-	
+
 	// Aimbot
 	int best_target;
 

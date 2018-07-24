@@ -41,6 +41,7 @@ struct COffsetz
 		std::ptrdiff_t m_usSolidFlags;
 		std::ptrdiff_t m_nSurroundType;
 		std::ptrdiff_t m_hOwner;
+		std::ptrdiff_t m_bDormant;
 	} DT_BaseEntity;
 
     struct

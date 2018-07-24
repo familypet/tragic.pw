@@ -173,13 +173,28 @@ public:
 	{
 		SetColor(_r, _g, _b, _a);
 	}
+	Color(float clr[0], float clr1[1], float clr2[2])
+	{
+		_color[0] = 255 * clr[0];
+		_color[1] = 255 * clr1[1];
+		_color[2] = 255 * clr2[2];
 
+		_color[3] = 255;
+
+	}
 	void SetColor(int _r, int _g, int _b, int _a = 255)
 	{
 		_color[0] = (unsigned char)_r;
 		_color[1] = (unsigned char)_g;
 		_color[2] = (unsigned char)_b;
 		_color[3] = (unsigned char)_a;
+	}
+	Color(float clr[4])
+	{
+		_color[0] = 255 * clr[0];
+		_color[1] = 255 * clr[1];
+		_color[2] = 255 * clr[2];
+		_color[3] = 255 * clr[3];
 	}
 
 	void GetColor(int &_r, int &_g, int &_b, int &_a) const
@@ -474,6 +489,7 @@ typedef struct player_info_s
 	unsigned int customfiles[4];
 	unsigned char filesdownloaded;
 } player_info_t;
+
 
 enum SolidType_t
 {

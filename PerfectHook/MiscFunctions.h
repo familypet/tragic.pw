@@ -106,7 +106,7 @@ inline void movementfix(QAngle realvec, CInput::CUserCmd* cmd)
 {
 	Vector vMove(cmd->forwardmove, cmd->sidemove, cmd->upmove);
 	float flSpeed = sqrt(vMove.x * vMove.x + vMove.y * vMove.y), flYaw;
-	Vector vMove2;
+	Vector vMove2;//asdklfjsidlfj
 	vectorAnglesVec(vMove, vMove2);
 	Normalizekek(vMove2);
 	flYaw = DEG2RAD(cmd->viewangles.y - realvec.y + vMove2.y);

@@ -19,6 +19,18 @@ void __fastcall hkOverrideView(void* _this, void* _edx, CViewSetup* setup)
 	C_BaseEntity *pLocal = g_EntityList->GetClientEntity(g_Engine->GetLocalPlayer());
 	if (pLocal && g_Engine->IsInGame())
 	{
+		/*if (g_Options.Visuals.NoVisualRecoil)
+		{
+		setup->angles.x -= ((pLocal->localPlayerExclusive()->GetViewPunchAngle().x * 2) * 0.4000000f);
+		setup->angles.y -= ((pLocal->localPlayerExclusive()->GetViewPunchAngle().y * 2) * 0.4000000f);
+
+
+		}*/ //FOV OVERRIDES| !pLocal->IsScoped()
+		if (!pLocal->IsScoped() && g_Options.Visuals.Enabled || g_Options.Visuals.OverrideScopedFOV)
+			setup->fov += g_Options.Visuals.FOVChanger;
+	}
+	if (pLocal && g_Engine->IsInGame())
+	{
 		if (g_Options.Visuals.NoVisualRecoil)
 		{
 			setup->angles.x -= ((pLocal->localPlayerExclusive()->GetViewPunchAngle().x * 2) * 0.45);
@@ -79,13 +91,16 @@ void __fastcall hkOverrideView(void* _this, void* _edx, CViewSetup* setup)
 	ofunc(_this, setup);
 	{
 		if (g_Options.Visuals.SniperCrosshair) {
-			CBaseCombatWeapon* pWeapon = (CBaseCombatWeapon*)g_EntityList->GetClientEntityFromHandle(pLocal->GetActiveWeaponHandle());
-			static auto debugspread = g_CVar->FindVar("weapon_debug_spread_show");
+			if (g_Engine->IsConnected() && g_Engine->IsInGame())
+			{
+				CBaseCombatWeapon* pWeapon = (CBaseCombatWeapon*)g_EntityList->GetClientEntityFromHandle(pLocal->GetActiveWeaponHandle());
+				static auto debugspread = g_CVar->FindVar("weapon_debug_spread_show");
 
-			if (MiscFunctions::IsSniper(pWeapon))
-				debugspread->SetValue(3);
-			else
-				debugspread->SetValue(0);
+				if (MiscFunctions::IsSniper(pWeapon))
+					debugspread->SetValue(3);
+				else
+					debugspread->SetValue(0);
+			}
 		}
 
 		if (g_Options.Visuals.InverseView)

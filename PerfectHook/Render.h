@@ -8,6 +8,7 @@
 void Quad();
 
 
+
 class Render
 {
 public:
@@ -16,6 +17,8 @@ public:
 	// Normal Drawing functions
 	void Clear(int x, int y, int w, int h, Color color);
 	void DrawOutlinedRect(int x, int y, int w, int h, Color col);
+	void Text2(int x, int y, const char * _Input, int font, Color color);
+	bool TransformScreen(const Vector & in, Vector & out);
 	void DrawRect(int x1, int y1, int x2, int y2, Color clr);
 	void Outline(int x, int y, int w, int h, Color color);
 	void DrawString2(DWORD font, int x, int y, Color color, DWORD alignment, const char* msg, ...);
@@ -27,16 +30,18 @@ public:
 	void PolyLine(int count, Vertex_t* Vertexs, Color colorLine);
 	void OutlineCircle(int x, int y, int r, int seg, Color color);
 	void Pixel(int x, int y, Color col);
-
+	void TexturedPolygon(int n, std::vector<Vertex_t> vertice, Color color);
 	// Gradient Functions
 	void GradientV(int x, int y, int w, int h, Color c1, Color c2);
 	void GradientH(int x, int y, int w, int h, Color c1, Color c2);
 
 	// Text functions
 
-
-
+	void DrawFillBox(int x, int y, int w, int h, Color color);
+	
 	RECT GetTextSize(DWORD font, const char* text);
+
+	Vector2D GetTextSizeWelcome(unsigned int Font, std::string Input);
 
 	// Other rendering functions
 	bool WorldToScreen(Vector &in, Vector &out);
@@ -56,6 +61,7 @@ public:
 		DWORD Watermark;
 		DWORD Guns;
 		DWORD NameFont;
+		DWORD Welcome;
 	} font;
 
 

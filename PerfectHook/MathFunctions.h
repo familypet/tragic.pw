@@ -20,6 +20,7 @@ void Normalize(Vector &vIn, Vector &vOut);
 void CalcAngle(Vector src, Vector dst, Vector &angles);
 void AngleVectors2(const Vector& qAngles, Vector& vecForward);
 void ClampAngles(Vector& inputangle);
+float RandomFloat2(float min, float max);
 void AverageDifference(const Vector& a, const Vector& b, float& result);
 Vector CalcAngle(Vector& src, Vector& dst);
 #define M_RADPI 57.295779513082f

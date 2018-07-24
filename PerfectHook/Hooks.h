@@ -8,8 +8,6 @@ namespace hooks
 {
     extern void initialize();
     extern void cleanup();
-
-
     extern vfunc_hook panel;
     extern vfunc_hook client;
     extern vfunc_hook clientmode;
@@ -23,6 +21,9 @@ namespace hooks
     extern vfunc_hook sv_cheats;
 	extern vfunc_hook renderview;
 	extern vfunc_hook steamgamecoordinator;
-
+	extern vfunc_hook modalcache;
 
 };
+
+
+

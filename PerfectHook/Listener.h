@@ -54,7 +54,15 @@ class item_purchase
 	};
 
 public:
-
+	struct damage_indicator_t {
+		int dmg;
+		bool initializes;
+		float earse_time;
+		float last_update;
+		C_BaseEntity* player;
+		Vector Position;
+	};
+	std::vector<damage_indicator_t> dmg_indicator;
 	static item_purchase* singleton()
 	{
 		static item_purchase* instance = new item_purchase;
@@ -176,11 +184,44 @@ public:
 					auto pVictim = reinterpret_cast<C_BaseEntity*>(g_EntityList->GetClientEntity(iVictim));
 					player_info_t pinfo;
 					g_Engine->GetPlayerInfo(iVictim, &pinfo);
-
+					Vector ScreenPosition;
 					g_CVar->ConsoleColorPrintf(Color(200, 255, 0, 255), "[tragic.pw] ");
 					G::Msg("Hit %s in the %s for %d damage (%d health remaining) \n", pinfo.name, HitgroupToName(event->GetInt("hitgroup")), event->GetInt("dmg_health"), event->GetInt("health"));
+					//g_Render->DrawFHELP(ScreenPosition.x, ScreenPosition.y, g_Render->font.ESP, true, true, Color(255, 0, 0, 255), pinfo.name);
+					C_BaseEntity *local_player = g_EntityList->GetClientEntity(g_Engine->GetLocalPlayer());
+					//auto local_player = g_EntityList->GetClientEntity(g_Engine->GetLocalPlayer());
+					if (!local_player)
+						return;
+					if (!local_player->GetHealth() > 0)
+						return;
+					float CurrentTime = local_player->GetTickBase() * g_Globals->interval_per_tick;
+					for (int i = 0; i < dmg_indicator.size(); i++) {
+						if (dmg_indicator[i].earse_time < CurrentTime) {
+							dmg_indicator.erase(dmg_indicator.begin() + i);
+							continue;
+						}
+						if (!dmg_indicator[i].initializes) {
+							dmg_indicator[i].Position = dmg_indicator[i].player->GetBonePos(6);
+							dmg_indicator[i].initializes = true;
+						}
+
+						if (CurrentTime - dmg_indicator[i].last_update > 0.0001f) {
+							dmg_indicator[i].Position.z -= (0.1f * (CurrentTime - dmg_indicator[i].earse_time));
+							dmg_indicator[i].last_update = CurrentTime;
+
+							
+
+							if (g_Render->WorldToScreen(dmg_indicator[i].Position, ScreenPosition)) {
+
+							//_Render->DrawFHELP(ScreenPosition.x, ScreenPosition.y, g_Render->font.ESP, true, true, Color(255, 0, 0, 255), std::to_string(dmg_indicator[i].dmg).c_str());
+								//g_Render->Text(ScreenPosition.x, ScreenPosition.y, Color(255, 0, 0, 255), g_Render->font.Default, std::to_string(dmg_indicator[i].dmg).c_str());
+							}
+						}
+					}
 
 				}
+
+				
 			}
 		}
 

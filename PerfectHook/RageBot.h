@@ -20,7 +20,9 @@ private:
 	int HitScan(C_BaseEntity* pEntity);
 	void DoNoRecoil(CInput::CUserCmd* pCmd);
 	bool AimAtPoint(C_BaseEntity* pLocal, Vector point, CInput::CUserCmd *pCmd);
+	void AutoZeus();
 	void DoAimbot(CInput::CUserCmd *pCmd, bool& bSendPacket);
+	void Freestanding();
 	void DoAntiAim(CInput::CUserCmd *pCmd, bool& bSendPacket); //get rid of me eventually
 
 

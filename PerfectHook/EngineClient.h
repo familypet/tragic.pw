@@ -8,6 +8,12 @@
 class INetChannelInfo
 {
 public:
+	enum FlowType_t
+	{
+		FLOW_OUTGOING = 0,
+		FLOW_INCOMING = 1,
+		FLOW_MAX = 2
+	};
     enum {
         GENERIC = 0,	// must be first and is default group
         LOCALPLAYER,	// bytes for local player entity update
@@ -113,7 +119,7 @@ public:
 	bool IsHltv()
 	{
 		typedef bool(__thiscall* uselles)(PVOID);
-		return call_vfunc< uselles >(this, 93)(this);
+		return call_vfunc< uselles >(this, 94)(this);
 	}
 	const matrix3x4& WorldToScreenMatrix()
 	{
@@ -130,4 +136,9 @@ public:
         typedef INetChannelInfo*(__thiscall* OriginalFn)(PVOID);
         return call_vfunc< OriginalFn >(this, 78)(this);
     }
+	unsigned int GetEngineBuildNumber()
+	{
+		typedef unsigned int(__thiscall* OriginalFn)(PVOID);
+		return call_vfunc< OriginalFn >(this, 104)(this);
+	}
 };

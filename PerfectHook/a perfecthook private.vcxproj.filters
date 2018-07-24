@@ -101,6 +101,12 @@
     <ClCompile Include="Parser.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
+    <ClCompile Include="HookIncludes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tracebeam.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Autowall.h">
@@ -388,5 +394,32 @@
     <ClInclude Include="SetupColors.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="RenderBeams.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CTrace.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CUtlVector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Иуфь.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Beam.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tracebeam.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IMDLLFindh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VectorNew.h">
+     <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.13.26128\include\vector" />
   </ItemGroup>
 </Project>

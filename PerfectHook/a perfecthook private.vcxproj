@@ -105,6 +105,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CaviarDreams.cpp" />
+    <ClCompile Include="HookIncludes.cpp" />
     <ClCompile Include="imguicolorpicker.cpp" />
     <ClCompile Include="Parser.cpp" />
     <ClCompile Include="recvproxy.cpp" />
@@ -133,10 +134,14 @@
     <ClCompile Include="SpoofedConvar.cpp" />
     <ClCompile Include="tinyxml2.cpp" />
     <ClCompile Include="MiscFunctions.cpp" />
+    <ClCompile Include="tracebeam.cpp" />
     <ClCompile Include="Utilities.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Beam.h" />
     <ClInclude Include="CaviarDreams.h" />
+    <ClInclude Include="CTrace.h" />
+    <ClInclude Include="CUtlVector.h" />
     <ClInclude Include="DoPostScreenSpaceEffects.h" />
     <ClInclude Include="dropboxes.h" />
     <ClInclude Include="flashlight.h" />
@@ -145,6 +150,7 @@
     <ClInclude Include="hitmark.h" />
     <ClInclude Include="IconFontAwesome.h" />
     <ClInclude Include="IMDLCache.h" />
+    <ClInclude Include="IMDLLFindh.h" />
     <ClInclude Include="IsConnected.h" />
     <ClInclude Include="IsHltv.h" />
     <ClInclude Include="LBYBreaking.h" />
@@ -203,6 +209,7 @@
     <ClInclude Include="PlaySound.h" />
     <ClInclude Include="PredictionSystem.h" />
     <ClInclude Include="RageBot.h" />
+    <ClInclude Include="RenderBeams.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Render.h" />
     <ClInclude Include="Resolver.h" />
@@ -221,6 +228,7 @@
     <ClInclude Include="Themes.h" />
     <ClInclude Include="tinyxml2.h" />
     <ClInclude Include="MiscFunctions.h" />
+    <ClInclude Include="tracebeam.h" />
     <ClInclude Include="Utilities.h" />
     <ClInclude Include="UtlBuffer.hpp" />
     <ClInclude Include="UtlMemory.hpp" />
@@ -229,8 +237,15 @@
     <ClInclude Include="Variables.h" />
     <ClInclude Include="Vector.h" />
     <ClInclude Include="Vector2D.h" />
+    <ClInclude Include="VectorNew.h" />
     <ClInclude Include="vmthook.h" />
     <ClInclude Include="XorStr.hpp" />
+    <ClInclude Include="Иуфь.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.13.26128\include\vector">
+      <DeploymentContent>false</DeploymentContent>
+    </None>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

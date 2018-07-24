@@ -12,7 +12,7 @@ class misc
     : public singleton<misc>
 {
 public:
-	void OnCreateMove(CInput::CUserCmd *cmd, C_BaseEntity *local);
+	void OnCreateMove(CInput::CUserCmd *cmd, C_BaseEntity *local, bool &bSendPacket);
 
 	static void misc::FakeWalk(CInput::CUserCmd* pCmd, bool &bSendPacket, C_BaseEntity *local);
 	void do_aimbot(C_BaseEntity *local, CBaseCombatWeapon *weapon, CInput::CUserCmd *cmd);
@@ -91,11 +91,11 @@ char* const ezfragslist[] =
 char* const phooklist[] =
 {
 	"tragic.pw",
-	"Get Good! Get tragic!",
-	"I'm not cheating, but If I was I would recommend tragic.pw",
-	"tragic > all",
-	"tragic owns me and all",
-	"tragic #1"
+	"Get Good! Get tragic.pw!",
+	"I'm not cheating, but If I was I would recommend dew",
+	"tragic.pw > all",
+	"tragic.pw owns me and all",
+	"tragic.pw #1"
 };
 char* const hooktroniclist[] =
 {

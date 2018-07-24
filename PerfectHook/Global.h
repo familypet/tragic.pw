@@ -19,10 +19,12 @@ namespace G // Global Stuff
 	extern char			buf3[128];
 	extern char			extra_flags;
 	extern bool			menuon;
-
+	extern bool			ForceRealAA;
 	using msg_t = void(__cdecl*)(const char*, ...);
 	extern msg_t		Msg;
 	extern WNDPROC  OldWindow;
 	extern float		hitmarkeralpha;
-
+	extern bool bShouldChoke;
+	extern int nChokedTicks;
+	extern float PredictedTime;
 }

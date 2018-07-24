@@ -9,7 +9,7 @@ typedef void(__stdcall *fsn_t)(ClientFrameStage_t);
 
 void  __stdcall hkFrameStageNotify(ClientFrameStage_t curStage)
 {
-	static auto ofunc = hooks::client.get_original<fsn_t>(36);
+	static auto ofunc = hooks::client.get_original<fsn_t>(37);
 	if (g_Engine->IsConnected() && g_Engine->IsInGame())
 	{
 		if (curStage == FRAME_NET_UPDATE_POSTDATAUPDATE_START) {
@@ -36,7 +36,7 @@ void  __stdcall hkFrameStageNotify(ClientFrameStage_t curStage)
 	}
 	ofunc(curStage);
 	if (curStage == FRAME_NET_UPDATE_POSTDATAUPDATE_START) {
-		if (g_Options.Ragebot.Resolver) Resolver();
+		if (g_Options.Ragebot.Resolver && g_Options.Ragebot.resenable) Resolver();
 		if (g_Options.LegitBot.legitresolver) legitresolver();
 		if (g_Options.Skinchanger.Enabled)
 		{
@@ -44,6 +44,7 @@ void  __stdcall hkFrameStageNotify(ClientFrameStage_t curStage)
 			SkinChanger();
 
 		}
+		if (g_Options.Ragebot.PitchAdjustment && g_Options.Ragebot.resenable) PitchAdjustment();
 		backtracking->Update(g_Globals->tickcount);
 	}
 

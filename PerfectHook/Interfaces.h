@@ -5,6 +5,19 @@
 #include <iostream>
 #include "Utilities.h"
 
+template<typename T>
+T* get_interface(CreateInterfaceFn f, const char* szInterfaceVersion)
+{
+	auto result = reinterpret_cast<T*>(f(szInterfaceVersion, nullptr));
+
+	if (!result) {
+		throw std::runtime_error(std::string("[get_interface] Failed to GetOffset interface: ") + szInterfaceVersion);
+	}
+
+	return result;
+}
+
+
 extern void InitialiseInterfaces();
 
 
@@ -33,10 +46,9 @@ extern C_CSPlayerResource* g_PlayerResource;
 extern C_CSGameRules* g_GameRules;
 extern IViewRender* g_ViewRender;
 extern IGameConsole* g_GameConsole;
-extern IMDLCache* g_MdlCache;
+extern IMDLCache* MDLCache;
 extern CHudChat* g_ChatElement;
 extern CGlowObjectManager* g_GlowObjManager;
-
 template<class T>
 static T* FindHudElement(const char* name)
 {
@@ -47,6 +59,7 @@ static T* FindHudElement(const char* name)
 }
 typedef void* (__cdecl* CreateInterface_t)(const char*, int*);
 typedef void* (*CreateInterfaceFn)(const char* pName, int* pReturnCode);
+
 inline CreateInterfaceFn get_module_factory(HMODULE module)
 {
 	return reinterpret_cast<CreateInterfaceFn>(GetProcAddress(module, "CreateInterface"));

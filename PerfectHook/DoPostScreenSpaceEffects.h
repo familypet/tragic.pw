@@ -10,7 +10,6 @@ bool _fastcall hkDoPostScreenSpaceEffects(void* ecx, void* edx, CViewSetup* pSet
 
     IMaterial *pMatGlowColor = g_MaterialSystem->FindMaterial("dev/glow_color", TEXTURE_GROUP_OTHER, true);
     g_ModelRender->ForcedMaterialOverride(pMatGlowColor);
-
     if (g_Options.Visuals.Glow && g_GlowObjManager && g_Engine->IsConnected())
     {
         auto local = g_EntityList->GetClientEntity(g_Engine->GetLocalPlayer());
@@ -20,30 +19,27 @@ bool _fastcall hkDoPostScreenSpaceEffects(void* ecx, void* edx, CViewSetup* pSet
             {
                 if (g_GlowObjManager->m_GlowObjectDefinitions[i].IsUnused() || !g_GlowObjManager->m_GlowObjectDefinitions[i].getEnt())
                     continue;
-
+				
                 CGlowObjectManager::GlowObjectDefinition_t* glowEnt = &g_GlowObjManager->m_GlowObjectDefinitions[i];
-
                 switch (glowEnt->getEnt()->GetClientClass()->m_ClassID)
                 {
                 default:
                         if (strstr(glowEnt->getEnt()->GetClientClass()->m_pNetworkName, ("CWeapon")))
-                            glowEnt->set(1.0f, 1.0f, 0.0f, 0.6f);
+                            glowEnt->set(g_Options.Colors.WeaponGlow[0], g_Options.Colors.WeaponGlow[1], g_Options.Colors.WeaponGlow[2], g_Options.Colors.Weaponalpha);
                     break;
                 case 1:
-                        glowEnt->set(1.0f, 1.0f, 0.0f, 0.6f);
+                        glowEnt->set(g_Options.Colors.WeaponGlow[0], g_Options.Colors.WeaponGlow[1], g_Options.Colors.WeaponGlow[2], g_Options.Colors.Weaponalpha);
                     break;
                 case 35:
-
                         if (g_Options.Visuals.Filter.EnemyOnly && glowEnt->getEnt()->GetTeamNum() == local->GetTeamNum())
                             break;
-
-                        if (glowEnt->getEnt()->GetTeamNum() == local->GetTeamNum())
-                            glowEnt->set(0.23921f, 0.55294f, 0.89019f, 0.7f);
-                        else if (glowEnt->getEnt()->GetTeamNum() != local->GetTeamNum())
-                            glowEnt->set(0.89019f, 0.23137f, 0.23137f, 0.7f);
+							if (glowEnt->getEnt()->GetTeamNum() == local->GetTeamNum())
+								glowEnt->set(g_Options.Colors.EnemyGlow[0], g_Options.Colors.EnemyGlow[1], g_Options.Colors.EnemyGlow[2], g_Options.Colors.Glowalpha);
+							else if (glowEnt->getEnt()->GetTeamNum() != local->GetTeamNum())
+								glowEnt->set(g_Options.Colors.TeamGlow[0], g_Options.Colors.TeamGlow[1], g_Options.Colors.TeamGlow[2], g_Options.Colors.Glowalpha);
                     break;
                 case 39:
-                        glowEnt->set(1.0f, 1.0f, 0.0f, 0.6f);
+                        glowEnt->set(g_Options.Colors.WeaponGlow[0], g_Options.Colors.WeaponGlow[1], g_Options.Colors.WeaponGlow[2], g_Options.Colors.Weaponalpha);
                     break;
                 }
             }

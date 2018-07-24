@@ -1,9 +1,8 @@
 
 
 #pragma once
+#include "tracebeam.h"
 
-#include "SDK.h"
-#include "singleton.hpp"
 class visuals
     :public singleton<visuals>
 {
@@ -30,6 +29,12 @@ private:
 		int x, y, w, h, gay;
 	};
     void DLight(C_BaseEntity* local, C_BaseEntity* entity);
+
+	void Skycolorchanger();
+
+	void bulletsbeam();
+
+	void WorldColorChanger();
 
 	// Get player info
 	Color GetPlayerColor(C_BaseEntity* pEntity, C_BaseEntity* local);

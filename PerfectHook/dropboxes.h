@@ -29,6 +29,131 @@ const char* skyboxchanger[] =
 	"Office"
 };
 
+const char* knifemodels[] =
+{
+	"Off",
+	"Minecraft",
+	"Abyss sword",
+	"Sharpened",
+	"Zombie",
+	"Police Baton",
+	"Adidas Baseball Bat",
+	"Candy Cane",
+	"Zelda sword",
+	"Demon Blood Sword",
+	"Neptune1",
+	"Neptune2",
+	"Neptune3",
+	"Neptune4",
+	"Neptune5",
+	"spinner"
+};
+
+const char* Freestandingez[] =
+{
+	"Disabled",
+	"Freestanding BETA",
+	"Keybased",
+	"Keybased Jitter",
+	"b1g aa",
+	"meme aa (broken xd)",
+	"b1g 1",
+	"BETA 2"
+	//"Freestand"
+};
+const char* ak47new[] =
+{
+	"Disabled",
+	"cat gun",
+	"AK-47 Transformers"
+
+};
+const char* playermodels[] =
+{
+	"Off",
+	"White anime",
+	"Inori Yuzuriha",
+	"Kotori Itsuka",
+	"Deadpool",
+	"Cornor (AS3)",
+	"Reina",
+	"Ezio Auditore",
+	"Leon S",
+	"Agent 47",
+	"Niko Bellic",
+	"Eahnot",
+	"Trevor Philips",
+	"Lightning FFXIII",
+	"Solid Snake",
+	"Batman",
+	"Lara Croft Bikini",
+	"Jason Voorhees",
+	"Remilia Scarlet",
+	"Crysis",
+	"Ada Wong",
+	"Duke Nukem",
+	"L4D Tank",
+	"JackFrost",
+	"Goku",
+	"Harley Quinn",
+	"Donald Trump",
+	"Bikini Girl",
+	"One Punch Man",
+	"Hellknight",
+	"Neptune Old",
+	"Blanc",
+	"Sega girl",
+	"Histoire",
+	"Noire",
+	"Noire new",
+	"Pururut",
+	"S-sha",
+	"Uni",
+	"Uzume",
+	"Vert",
+	"TF2",
+	"Octanians",
+	"Zombie"
+
+};
+
+const char* awpmodels[] =
+{
+	"Off",
+	"Predator Bow",
+	"DSR-50",
+	"RPG",
+	"Neputine awp"
+};
+
+const char* m4a1models[] =
+{
+	"Off",
+	"Ethereal",
+	"Crossbow"
+};
+
+const char* granademodels[] =
+{
+	"Off",
+	"Jump",
+	"Shield",
+
+};
+
+const char* mp7models[] =
+{
+	"Off",
+	"Lightning HZ-1",
+	"Lightning LZ-1",
+	"The Perilous Painter"
+
+};
+const char* incgrenademodels[] =
+{
+	"Off",
+	"Infects",
+};
 
 
 const char* AntiAimThirdperson[] =
@@ -37,6 +162,7 @@ const char* AntiAimThirdperson[] =
 	"Fake"
 };
 
+
 const char* clantags[] =
 {
 	"none",
@@ -44,6 +170,7 @@ const char* clantags[] =
 	"tragic",
 	"gamesense"
 };
+
 
 
 
@@ -176,7 +303,7 @@ const char* configFiles[] =
 const char* themes[] =
 {
 	"Default",
-    "Old tragic"
+    "tragic"
 };
 const char* colors[] =
 {
@@ -359,13 +486,40 @@ const char* gloves[] =
 	"Specialist - Forest DDPAT",
 	"Specialist - Crimson Kimono"
 };
-
+static const char* AtTarget[] =
+{
+	"Disabled",
+	"Enabled"
+	//"Average"
+};
 const char* smoke[] =
 {
 	"OFF",
 	"Wired"
 
 };
+static const char* AntiaimbotYaw[] =
+{
+	"Disabled", "Static", "Jitter", "180 spin", "180z", "Spin", "Lowerbody"
+};
+static const char* AntiaimbotYawRun[] =
+{
+	"Disabled", "Static", "Jitter", "180 spin", "180z", "Spin", "Lowerbody"
+};
+
+static const char* AntiaimbotYawFake[] =
+{
+	"Disabled", "Static", "Opposite", "Jitter", "Spin", "180z", "Sideways", "Lowerbody", "180 Treehouse","180 B1gware","180 b1gware 1"
+};
+
+const char* LegitAACombo[] =
+{
+	"Backwards",
+	"Backjitter",
+	"Sideways",
+	"Sidewaysjitter"
+};
+
 const char* resolvers[] =
 {
 	"OFF",
@@ -373,9 +527,46 @@ const char* resolvers[] =
 	"Bruteforce",
 	"LBY-Based",
 	"Reverse Complex",
-	"tragic.pw // testing"
-
+	"tragic.pw  // testing"
+	"LowerBody", 
+	"LowerBody3", 
+	"Forcing",
+	"OnShoots",
+	"Auto",
+	"Second Auto",
+	"Random",
+	"Random OnShoots",
+	"Mathematical",
+	"LowerBody Inverse", 
+	"Smart1 x Math",
+	"Smart2 x OnShoots",
+	"Auto2(Top?!)",
+	"1(Top?!)",
+	"Ekzi",
+	"Auto2XG",
+	"Default", 
+	"Test",
+	"LewisFTM - LBY Auto",
+	"FreaK - Freestanding Prediction",
+	"LuckyHvH - Delta",
+	"Alternative",
+	"huge -fps"
 };
+const char* ghostchams[] =
+{
+	"Real",
+	"Fake",
+	"LowerBody"
+};
+const char* resolverspitch[] =
+{
+	"Default",
+	"Down",
+	"Up",
+	"Zero",
+	"Automatic Spread"
+};
+
 const char* knifeskins[] =
 {
 	"None",
@@ -828,6 +1019,6 @@ const char* LegitChoices[] =
 {
 	"None",
 	"Backwards",
-	"Sideways (FLIP KEY = LALT)",
+	"Sideways (LALT)",
 	"AdaptiveSide"
 };

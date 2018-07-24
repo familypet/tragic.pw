@@ -16,6 +16,7 @@ EndScene_t	oEndScene = nullptr;
 Reset_t		oReset = nullptr;
 
 
+
 HRESULT __stdcall hkReset(IDirect3DDevice9* thisptr, D3DPRESENT_PARAMETERS* params) {
 
 	if (!renderer->IsReady())
@@ -51,6 +52,8 @@ HRESULT _stdcall hkPresent(LPDIRECT3DDEVICE9 pDevice, RECT* pSourceRect, RECT* p
 	if (is_renderer_active) {
 		if (mouse_enabled) {
 			g_Engine->ClientCmd_Unrestricted("cl_mouseenable 0");
+			static ConVar * cvar = g_CVar->FindVar("cl_mouseenable");
+			cvar->SetValue(0);
 			mouse_enabled = false;
 			G::menuon = true;
 			g_Options.Menu.iTab = 0;
@@ -59,6 +62,8 @@ HRESULT _stdcall hkPresent(LPDIRECT3DDEVICE9 pDevice, RECT* pSourceRect, RECT* p
 	else {
 		if (!mouse_enabled) {
 			g_Engine->ClientCmd_Unrestricted("cl_mouseenable 1");
+			static ConVar * cvar = g_CVar->FindVar("cl_mouseenable");
+			cvar->SetValue(1);
 			mouse_enabled = true;
 			G::menuon = false;
 		}

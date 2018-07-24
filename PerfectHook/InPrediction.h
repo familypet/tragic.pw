@@ -19,6 +19,7 @@ bool __stdcall hkInPrediction()
 			MOV pLocalEntity, ESI
 			MOV m_LocalViewAngles, EBX
 		}
+		
 		Vector viewPunch = pLocalEntity->localPlayerExclusive()->GetViewPunchAngle();
 		Vector aimPunch = pLocalEntity->localPlayerExclusive()->GetAimPunchAngle();
 		m_LocalViewAngles[0] -= (viewPunch[0] + (aimPunch[0] * 2 * 0.4499999f));

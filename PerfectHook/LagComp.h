@@ -24,6 +24,7 @@ public:
 	void Update(int tick_count);
 	void legitBackTrack(CInput::CUserCmd* cmd, C_BaseEntity* pLocal);
 	void RageBackTrack(CInput::CUserCmd* cmd, C_BaseEntity* pLocal);
+	float GetLerpTime();
 };
 
 extern backtrackData headPositions[64][12];
